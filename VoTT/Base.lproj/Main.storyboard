@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="liA-dU-oX9">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Welcome-->
+        <scene sceneID="dWn-9E-BK6">
+            <objects>
+                <viewController title="Welcome" id="Zfp-q3-T8h" customClass="WelcomeViewController" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="7oJ-vt-I7H"/>
+                    <connections>
+                        <segue destination="pYq-GZ-lDG" kind="show" identifier="start" id="z43-Mh-KJJ"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ca3-z1-7R4" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1034" y="125"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="yBY-cR-qlJ">
+            <objects>
+                <navigationController id="liA-dU-oX9" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="LKn-UL-AiT">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="Zfp-q3-T8h" kind="relationship" relationship="rootViewController" id="Tkc-3g-Dc7"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="JoF-O2-bkd" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="199" y="125"/>
+        </scene>
+        <!--Tag This Image-->
+        <scene sceneID="PY8-QM-LQr">
+            <objects>
+                <viewController title="Tag This Image" id="pYq-GZ-lDG" customClass="ImageTagViewController" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="DNo-8K-XDy"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="iIT-7m-FfD" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1927" y="125"/>
+        </scene>
+    </scenes>
+</document>
