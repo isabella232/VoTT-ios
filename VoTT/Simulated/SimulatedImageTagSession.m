@@ -23,7 +23,7 @@
                        [[SimulatedImageTagTask alloc] initWithTaskId:[[NSUUID UUID] UUIDString]
                                                                 type:@"annotate"
                                                             imageURL:[NSURL fileURLWithPath:guitarPath]
-                                                    objectClassNames:@[@"electric-guitar", @"keyboard"]
+                                                    objectClassNames:@[@"keyboard", @"bass", @"electric-guitar"]
                                                 classifierSuggestion:@"electric-guitar"
                                                         instructions:[[SimulatedImageTagInstructions alloc] initWithText:@"Draw a box around the body of any guitars"
                                                                                                              sampleImage:[NSURL fileURLWithPath:guitarPath]]],

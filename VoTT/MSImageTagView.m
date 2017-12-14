@@ -53,8 +53,12 @@ NSString *const MSImageTagViewDidTagNotification = @"MSImageTagViewDidTagNotific
 
 - (void)commonInit
 {
+    self.autoresizesSubviews = YES;
+    
     self.imageView = [[UIImageView alloc] initWithFrame:self.bounds];
     self.imageView.contentMode = UIViewContentModeScaleAspectFit;
+    self.imageView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+    self.imageView.autoresizesSubviews = YES;
     self.imageView.userInteractionEnabled = NO;
     [self addSubview:_imageView];
     
@@ -177,6 +181,9 @@ NSString *const MSImageTagViewDidTagNotification = @"MSImageTagViewDidTagNotific
 {
     [super setFrame:frame];
     [self updateImageTransform];
+    self.layer.frame = self.bounds;
+    [self layoutSubviews];
+    [self.layer layoutSublayers];
 }
 
 - (void)setSelectedAnnotation:(MSImageTagAnnotation *)selectedAnnotation

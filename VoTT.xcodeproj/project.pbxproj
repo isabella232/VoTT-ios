@@ -136,14 +136,14 @@
 				DB4AB34D1FE02F4B00B2378B /* SimulatedSannerViewController.xib */,
 				DB4AB34E1FE02F4B00B2378B /* SimulatedImageTagService.h */,
 				DB4AB34B1FE02F4B00B2378B /* SimulatedImageTagService.m */,
-				DB1D56091FE1E45700352832 /* SimulatedImageClassifier.h */,
-				DB1D560A1FE1E45700352832 /* SimulatedImageClassifier.m */,
 				DB1D560C1FE1E76000352832 /* SimulatedImageTagSession.h */,
 				DB1D560D1FE1E76000352832 /* SimulatedImageTagSession.m */,
-				DB1D560F1FE1E79B00352832 /* SimulatedImageTagInstructions.h */,
-				DB1D56101FE1E79B00352832 /* SimulatedImageTagInstructions.m */,
 				DB1D56121FE1E7D100352832 /* SimulatedImageTagTask.h */,
 				DB1D56131FE1E7D100352832 /* SimulatedImageTagTask.m */,
+				DB1D560F1FE1E79B00352832 /* SimulatedImageTagInstructions.h */,
+				DB1D56101FE1E79B00352832 /* SimulatedImageTagInstructions.m */,
+				DB1D56091FE1E45700352832 /* SimulatedImageClassifier.h */,
+				DB1D560A1FE1E45700352832 /* SimulatedImageClassifier.m */,
 			);
 			path = Simulated;
 			sourceTree = "<group>";

@@ -76,7 +76,7 @@
 @protocol MSImageTagAnnotation <NSObject>
 
 @property (nonatomic, copy, readonly) NSString *annotationId;
-@property (nonatomic, copy, readonly) NSString *objectClass;
+@property (nonatomic, copy, readwrite) NSString *objectClass;
 @property (nonatomic, assign, readonly) CGRect objectBoundingBox;
 
 @end
