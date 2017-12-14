@@ -10,4 +10,6 @@
 
 @interface SimulatedImageClassifier : NSObject <MSImageClassifier>
 
+@property (nonatomic, copy) NSString *objectClass;
+
 @end

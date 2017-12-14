@@ -14,6 +14,7 @@
                           type:(NSString *)type
                       imageURL:(NSURL *)imageURL
               objectClassNames:(NSArray<NSString *> *)objectClassNames
+          classifierSuggestion:(NSString *)classifierSuggestion
                   instructions:(id <MSImageTagInstructions>)instructions
 {
     self = [super init];
@@ -21,6 +22,8 @@
         _taskId = requestId;
         _type = type;
         _imageURL = imageURL;
+        _objectClassNames = objectClassNames;
+        _classifierSuggestion = classifierSuggestion;
         _instructions = instructions;
     }
     return self;

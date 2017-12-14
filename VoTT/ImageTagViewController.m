@@ -85,17 +85,13 @@
 #if TARGET_IPHONE_SIMULATOR
         [jpeg writeToFile:@"/tmp/vott.simulator.selection.jpg" atomically:NO];
 #endif
-        [[self.session imageClassifier] classifyImageData:jpeg completion:^(NSDictionary *prediction, NSError *error) {
+        [[self.session imageClassifier] classifyImageData:jpeg completion:^(NSString *prediction, NSError *error) {
             if (error) {
                 NSLog(@"Encountered error when attempting to classify image selection: %@", error);
                 return;
             }
             if (!selectionController.selectedClassName) {
-                NSArray *predictions = [prediction objectForKey:@"Predictions"];
-                if (predictions.count) {
-                    NSDictionary *prediction = [predictions objectAtIndex:0];
-                    selectionController.selectedClassName = [prediction objectForKey:@"Tag"];
-                }
+                selectionController.selectedClassName = prediction;
             }
         }];
     });

@@ -63,7 +63,7 @@
 @protocol MSImageClassifier <NSObject>
 
 - (void)classifyImageData:(NSData *)image
-               completion:(void (^)(NSDictionary *prediction, NSError *error))completion;
+               completion:(void (^)(NSString *classNamePrediction, NSError *error))completion;
 
 @end
 

@@ -16,10 +16,13 @@
 @property (nonatomic, copy, readonly) NSArray<NSString *> *objectClassNames;
 @property (nonatomic, strong, readonly) id <MSImageTagInstructions> instructions;
 
+@property (nonatomic, copy, readonly) NSString *classifierSuggestion;
+
 - (instancetype)initWithTaskId:(NSString *)requestId
                           type:(NSString *)type
                       imageURL:(NSURL *)imageURL
               objectClassNames:(NSArray<NSString *> *)objectClassNames
+          classifierSuggestion:(NSString *)classifierSuggestion
                   instructions:(id <MSImageTagInstructions>)instructions;
 
 @end
