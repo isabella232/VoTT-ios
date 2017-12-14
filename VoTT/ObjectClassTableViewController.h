@@ -14,6 +14,7 @@ typedef void(^ObjectClassTableViewControllerClassNameSelected)(NSString *objectC
 @interface ObjectClassTableViewController : UITableViewController
 
 @property (nonatomic, strong) id <MSImageTagTask> task;
+@property (nonatomic, strong) NSString *selectedClassName;
 @property (nonatomic, strong) ObjectClassTableViewControllerClassNameSelected objectClassSelectionCompletion;
 
 @end

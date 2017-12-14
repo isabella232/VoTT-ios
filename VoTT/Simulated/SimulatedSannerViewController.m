@@ -22,7 +22,7 @@
 {
     [super viewDidAppear:animated];
     
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         if (_scanCompletion) {
             _scanCompletion([NSURL URLWithString:@"https://www.microsoft.com/developerblog/"], nil);
         }

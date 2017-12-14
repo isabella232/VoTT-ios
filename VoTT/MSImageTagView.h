@@ -14,7 +14,8 @@ extern NSString *const MSImageTagViewDidTagNotification;
 
 @interface MSImageTagView : UIView
 
-@property (nonatomic, strong) MSImageTagDocument *document;
+@property (nonatomic, strong, readwrite) MSImageTagDocument *document;
+@property (nonatomic, readonly) UIImage *image;
 
 @end
 

@@ -14,6 +14,8 @@
 @protocol MSImageTagTask;
 @protocol MSImageTagInstructions;
 
+@protocol MSImageClassifier;
+
 @protocol MSImageTagResult;
 @protocol MSImageTagAnnotation;
 
@@ -30,6 +32,7 @@
 - (void)submitResult:(id<MSImageTagResult>)result
              forTask:(id<MSImageTagTask>)task
           completion:(void (^)(NSError *error))completion;
+- (id <MSImageClassifier>)imageClassifier;
 
 @end
 
@@ -54,6 +57,13 @@
 
 @property (nonatomic, copy, readonly) NSString *text;
 @property (nonatomic, copy, readonly) NSURL *sampleImage;
+
+@end
+
+@protocol MSImageClassifier <NSObject>
+
+- (void)classifyImageData:(NSData *)image
+               completion:(void (^)(NSDictionary *prediction, NSError *error))completion;
 
 @end
 

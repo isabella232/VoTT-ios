@@ -132,13 +132,27 @@ NSString *const MSImageTagViewDidTagNotification = @"MSImageTagViewDidTagNotific
         }
         case UIGestureRecognizerStateEnded:
         {
-            [[NSNotificationCenter defaultCenter] postNotificationName:MSImageTagViewDidTagNotification object:self.selectedAnnotation];
+            NSDictionary *userInfo = @{
+                                       @"annotation": self.selectedAnnotation,
+                                       @"modelRect":[NSValue valueWithCGRect:self.selectedAnnotation.objectBoundingBox],
+                                       @"viewRect":[NSValue valueWithCGRect:CGRectApplyAffineTransform(self.selectedAnnotation.objectBoundingBox, _modelViewTransform)]
+                                       };
+            [[NSNotificationCenter defaultCenter] postNotificationName:MSImageTagViewDidTagNotification object:self userInfo:userInfo];
             self.selectedAnnotation = nil;
             break;
         }
+        case UIGestureRecognizerStateCancelled:
+        case UIGestureRecognizerStateFailed:
         default:
+            NSLog(@"%s recognizer.state:%@", __FUNCTION__, @(recognizer.state));
+            self.selectedAnnotation = nil;
             break;
     }
+}
+
+- (UIImage *)image
+{
+    return self.imageView.image;
 }
 
 - (void)setDocument:(MSImageTagDocument *)document

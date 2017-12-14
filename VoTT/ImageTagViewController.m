@@ -24,9 +24,16 @@
 
 @implementation ImageTagViewController
 
+- (void)dealloc
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemSave target:self action:@selector(save:)];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(imageTagViewDidTagNotification:) name:MSImageTagViewDidTagNotification object:self.imageTagView];
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -52,7 +59,6 @@
 
 - (IBAction)save:(id)sender
 {
-    NSLog(@"%s", __FUNCTION__);
     __block ImageTagViewController *blockSelf = self;
     MBProgressHUD *saveHUD = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     saveHUD.label.text = @"Saving...";
@@ -63,24 +69,50 @@
             blockSelf.task = task;
         }];
     }];
-//    [self tag:sender];
 }
 
-- (IBAction)tag:(id)sender
+- (void)imageTagViewDidTagNotification:(NSNotification *)notification
 {
+    const CGRect modelRect = [[notification.userInfo objectForKey:@"modelRect"] CGRectValue];
+    UIImage *image = self.imageTagView.image;
+    CGImageRef drawImage = CGImageCreateWithImageInRect(image.CGImage, modelRect);
+    UIImage *croppedImage = [UIImage imageWithCGImage:drawImage];
+    CGImageRelease(drawImage);
+
     ObjectClassTableViewController *selectionController = [[ObjectClassTableViewController alloc] init];
-    selectionController.modalPresentationStyle = UIModalPresentationPopover;
-    [selectionController setObjectClassSelectionCompletion:^(NSString *objectClassName) {
-    }];
-    [self presentViewController:selectionController animated:YES completion:^{
-    }];
+    dispatch_async(dispatch_get_global_queue(0, 0), ^{
+        NSData *jpeg = UIImageJPEGRepresentation(croppedImage, 0.85);
+#if TARGET_IPHONE_SIMULATOR
+        [jpeg writeToFile:@"/tmp/vott.simulator.selection.jpg" atomically:NO];
+#endif
+        [[self.session imageClassifier] classifyImageData:jpeg completion:^(NSDictionary *prediction, NSError *error) {
+            if (error) {
+                NSLog(@"Encountered error when attempting to classify image selection: %@", error);
+                return;
+            }
+            if (!selectionController.selectedClassName) {
+                NSArray *predictions = [prediction objectForKey:@"Predictions"];
+                if (predictions.count) {
+                    NSDictionary *prediction = [predictions objectAtIndex:0];
+                    selectionController.selectedClassName = [prediction objectForKey:@"Tag"];
+                }
+            }
+        }];
+    });
+
     
-    selectionController.popoverPresentationController.permittedArrowDirections = UIPopoverArrowDirectionUp;
-    selectionController.popoverPresentationController.sourceView = self.view;
-    selectionController.popoverPresentationController.sourceRect = CGRectMake(0,
-                                                                              self.view.bounds.size.height/2.0,
-                                                                              self.view.bounds.size.width,
-                                                                              self.view.bounds.size.height/2.0);
+//    const CGRect viewRect = [[notification.userInfo objectForKey:@"viewRect"] CGRectValue];
+//    selectionController.modalPresentationStyle = UIModalPresentationPopover;
+//    selectionController.preferredContentSize = CGSizeMake(200, 200);
+//    [selectionController setObjectClassSelectionCompletion:^(NSString *objectClassName) {
+//    }];
+//    [self presentViewController:selectionController animated:YES completion:^{
+//    }];
+//
+//    selectionController.popoverPresentationController.canOverlapSourceViewRect = YES;
+//    selectionController.popoverPresentationController.permittedArrowDirections = UIPopoverArrowDirectionAny;
+//    selectionController.popoverPresentationController.sourceView = self.imageTagView;
+//    selectionController.popoverPresentationController.sourceRect = viewRect;
 }
 
 @end

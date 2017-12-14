@@ -9,6 +9,10 @@
 /* Begin PBXBuildFile section */
 		8AEAC7CBECB0D1961968368E /* libPods-VoTTTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 89C61A5CB40E398E8EEAB657 /* libPods-VoTTTests.a */; };
 		B7281839AE6A93DD4635C6D7 /* libPods-VoTT.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8AC17BB942A159CF3C45107A /* libPods-VoTT.a */; };
+		DB1D560B1FE1E45700352832 /* SimulatedImageClassifier.m in Sources */ = {isa = PBXBuildFile; fileRef = DB1D560A1FE1E45700352832 /* SimulatedImageClassifier.m */; };
+		DB1D560E1FE1E76000352832 /* SimulatedImageTagSession.m in Sources */ = {isa = PBXBuildFile; fileRef = DB1D560D1FE1E76000352832 /* SimulatedImageTagSession.m */; };
+		DB1D56111FE1E79B00352832 /* SimulatedImageTagInstructions.m in Sources */ = {isa = PBXBuildFile; fileRef = DB1D56101FE1E79B00352832 /* SimulatedImageTagInstructions.m */; };
+		DB1D56141FE1E7D100352832 /* SimulatedImageTagTask.m in Sources */ = {isa = PBXBuildFile; fileRef = DB1D56131FE1E7D100352832 /* SimulatedImageTagTask.m */; };
 		DB2D6D8B1FD897CF00531795 /* WelcomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DB2D6D891FD897CF00531795 /* WelcomeViewController.m */; };
 		DB2D6D8C1FD897CF00531795 /* WelcomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DB2D6D8A1FD897CF00531795 /* WelcomeViewController.xib */; };
 		DB4AB3391FDF078500B2378B /* MSImageTagDocument.m in Sources */ = {isa = PBXBuildFile; fileRef = DB4AB3321FDF078400B2378B /* MSImageTagDocument.m */; };
@@ -48,6 +52,14 @@
 		89C61A5CB40E398E8EEAB657 /* libPods-VoTTTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-VoTTTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8AC17BB942A159CF3C45107A /* libPods-VoTT.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-VoTT.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D52F4CB9B5203B8F582D4EBB /* Pods-VoTTTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VoTTTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-VoTTTests/Pods-VoTTTests.release.xcconfig"; sourceTree = "<group>"; };
+		DB1D56091FE1E45700352832 /* SimulatedImageClassifier.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SimulatedImageClassifier.h; sourceTree = "<group>"; };
+		DB1D560A1FE1E45700352832 /* SimulatedImageClassifier.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SimulatedImageClassifier.m; sourceTree = "<group>"; };
+		DB1D560C1FE1E76000352832 /* SimulatedImageTagSession.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SimulatedImageTagSession.h; sourceTree = "<group>"; };
+		DB1D560D1FE1E76000352832 /* SimulatedImageTagSession.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SimulatedImageTagSession.m; sourceTree = "<group>"; };
+		DB1D560F1FE1E79B00352832 /* SimulatedImageTagInstructions.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SimulatedImageTagInstructions.h; sourceTree = "<group>"; };
+		DB1D56101FE1E79B00352832 /* SimulatedImageTagInstructions.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SimulatedImageTagInstructions.m; sourceTree = "<group>"; };
+		DB1D56121FE1E7D100352832 /* SimulatedImageTagTask.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SimulatedImageTagTask.h; sourceTree = "<group>"; };
+		DB1D56131FE1E7D100352832 /* SimulatedImageTagTask.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SimulatedImageTagTask.m; sourceTree = "<group>"; };
 		DB2D6D881FD897CF00531795 /* WelcomeViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WelcomeViewController.h; sourceTree = "<group>"; };
 		DB2D6D891FD897CF00531795 /* WelcomeViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WelcomeViewController.m; sourceTree = "<group>"; };
 		DB2D6D8A1FD897CF00531795 /* WelcomeViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WelcomeViewController.xib; sourceTree = "<group>"; };
@@ -119,11 +131,19 @@
 		DB4AB3491FE02F4B00B2378B /* Simulated */ = {
 			isa = PBXGroup;
 			children = (
-				DB4AB34E1FE02F4B00B2378B /* SimulatedImageTagService.h */,
-				DB4AB34B1FE02F4B00B2378B /* SimulatedImageTagService.m */,
 				DB4AB34C1FE02F4B00B2378B /* SimulatedSannerViewController.h */,
 				DB4AB34A1FE02F4B00B2378B /* SimulatedSannerViewController.m */,
 				DB4AB34D1FE02F4B00B2378B /* SimulatedSannerViewController.xib */,
+				DB4AB34E1FE02F4B00B2378B /* SimulatedImageTagService.h */,
+				DB4AB34B1FE02F4B00B2378B /* SimulatedImageTagService.m */,
+				DB1D56091FE1E45700352832 /* SimulatedImageClassifier.h */,
+				DB1D560A1FE1E45700352832 /* SimulatedImageClassifier.m */,
+				DB1D560C1FE1E76000352832 /* SimulatedImageTagSession.h */,
+				DB1D560D1FE1E76000352832 /* SimulatedImageTagSession.m */,
+				DB1D560F1FE1E79B00352832 /* SimulatedImageTagInstructions.h */,
+				DB1D56101FE1E79B00352832 /* SimulatedImageTagInstructions.m */,
+				DB1D56121FE1E7D100352832 /* SimulatedImageTagTask.h */,
+				DB1D56131FE1E7D100352832 /* SimulatedImageTagTask.m */,
 			);
 			path = Simulated;
 			sourceTree = "<group>";
@@ -416,7 +436,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DB1D56111FE1E79B00352832 /* SimulatedImageTagInstructions.m in Sources */,
 				DB4AB3501FE02F4B00B2378B /* SimulatedImageTagService.m in Sources */,
+				DB1D560E1FE1E76000352832 /* SimulatedImageTagSession.m in Sources */,
 				DB4AB35B1FE03C3D00B2378B /* ImageTagViewController.m in Sources */,
 				DB4AB33C1FDF078500B2378B /* MSImageTagView.m in Sources */,
 				DB4AB33A1FDF078500B2378B /* MSPanGestureRecognizer.m in Sources */,
@@ -424,6 +446,8 @@
 				DB4AB3391FDF078500B2378B /* MSImageTagDocument.m in Sources */,
 				DBC1E7191FD8DB5000176EFB /* ObjectClassTableViewController.m in Sources */,
 				DB85BA821FD8975800DFFB31 /* main.m in Sources */,
+				DB1D560B1FE1E45700352832 /* SimulatedImageClassifier.m in Sources */,
+				DB1D56141FE1E7D100352832 /* SimulatedImageTagTask.m in Sources */,
 				DB4AB34F1FE02F4B00B2378B /* SimulatedSannerViewController.m in Sources */,
 				DB4AB33B1FDF078500B2378B /* MSImageRectTagLayer.m in Sources */,
 				DB85BA741FD8975800DFFB31 /* AppDelegate.m in Sources */,
